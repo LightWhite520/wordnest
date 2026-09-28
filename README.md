@@ -58,9 +58,7 @@
 pnpm install
 pnpm dev
 pnpm check
-pnpm test
 pnpm build
-pnpm test:e2e
 ```
 
 开发保留现有 SvelteKit 工程。生产使用 `vite.standalone.config.ts`、独立 Svelte 入口和 `vite-plugin-singlefile`，将动态模块也合并进 HTML。构建末尾自动验证 `dist` 中只有 `index.html`，且没有外部脚本、样式或远程资源引用。
@@ -69,15 +67,11 @@ pnpm test:e2e
 
 核心模块在 `src/lib`：`db.ts` 负责事务与会话，`scheduler.ts` 负责 FSRS，`importer.ts` 负责词表解析，`backup.ts` 负责校验与恢复，`stats.ts` 负责本地日期统计，`course.ts` 保存用户提供的课程内容。
 
-## 验证
+## 构建检查
 
-- Vitest + fake-indexeddb：评分并发、写入失败回滚、每日配额、到期排序、删词续学、导入去重/事务、备份恢复、拼写判定与跨日统计。
-- Playwright：默认使用已安装的 Windows Edge，直接打开最终 HTML，在独立浏览器上下文内执行，不修改日常浏览器数据。
-- 浏览器流程覆盖离线零外部请求、刷新续学、创建/导入/收藏、专项练习不修改调度、备份恢复、Excel 多工作表、错误备份、多标签同步、快捷键与完成页。
-- 视觉检查包括桌面、深色模式、390px 手机、820px 平板、长短语、弹窗及缩小至 460px 高度的键盘可视区域模拟；不等同于真实手机设备键盘测试。
-- 截图位于 `artifacts/`，测试结果位于 `test-results/`，都不进入单文件交付目录。
-
-测试用 XLSX 位于 `tests/fixtures/two-sheets.xlsx`；可用 Python 标准库脚本 `python tests/create-fixtures.py` 重新生成。更换测试浏览器时修改 `playwright.config.ts` 的 `channel`。
+- `pnpm check` 检查 TypeScript 类型与 Svelte 组件。
+- `pnpm build` 生成 HTML，并检查交付目录仅包含一个 HTML 文件、脚本与样式已内嵌、没有远程资源引用。
+- GitHub CI 执行依赖安装、类型检查和构建，成功后保存单文件 HTML 产物。
 
 ## 许可证与贡献
 

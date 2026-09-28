@@ -2,5 +2,4 @@ node_modules
 .svelte-kit
 dist
 artifacts
-test-results
 pnpm-lock.yaml

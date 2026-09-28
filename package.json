@@ -1,0 +1,58 @@
+{
+  "name": "wordnest",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build --config vite.standalone.config.ts && node scripts/verify-build.mjs",
+    "preview": "vite preview --config vite.standalone.config.ts",
+    "prepare": "svelte-kit sync || echo ''",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@sveltejs/adapter-auto": "^7.0.1",
+    "@sveltejs/kit": "^2.63.0",
+    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/papaparse": "^5.5.2",
+    "fake-indexeddb": "^6.2.5",
+    "prettier": "^3.9.9",
+    "prettier-plugin-svelte": "^4.1.1",
+    "svelte": "^5.56.1",
+    "svelte-check": "^4.6.0",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vite-plugin-singlefile": "^2.3.3",
+    "vitest": "^5.0.2"
+  },
+  "dependencies": {
+    "@lucide/svelte": "^1.48.0",
+    "dexie": "^4.4.6",
+    "papaparse": "^5.7.0",
+    "read-excel-file": "^9.3.10",
+    "ts-fsrs": "^5.4.2"
+  },
+  "description": "拾词 WordNest — a beautiful, offline-first English vocabulary app in a single HTML file",
+  "license": "MIT",
+  "author": "LightWhite520",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LightWhite520/wordnest.git"
+  },
+  "homepage": "https://github.com/LightWhite520/wordnest#readme",
+  "bugs": {
+    "url": "https://github.com/LightWhite520/wordnest/issues"
+  },
+  "packageManager": "pnpm@10.29.3",
+  "engines": {
+    "node": ">=24"
+  }
+}

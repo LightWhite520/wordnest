@@ -7,6 +7,10 @@
 
 奶油白与墨绿色的本地英语学习书房。最终交付只有 **`dist/index.html`** 一个文件；脚本、样式、SVG 图标、插画和课程词汇全部内嵌，无 CDN、无后端、无登录。
 
+英语课的作业，看着有点意义就开源了，纯Vibe coding完成。
+
+爱来自GPT 6 Astra Ultra。
+
 ![拾词 WordNest 桌面界面](docs/preview.png)
 
 ## 直接使用
